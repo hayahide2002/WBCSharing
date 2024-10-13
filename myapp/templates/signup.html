@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    
+    <!-- Djangoのフォームを使って、CSRF保護とフォームフィールドを表示します -->
+    <form method="post">
+        {% csrf_token %}  <!-- CSRFトークンを含める（セキュリティ対策） -->
+        
+        <!-- フォームのフィールドを表示 -->
+        {{ form.as_p }}
+
+        <!-- サインアップボタン -->
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <!-- ログインページへのリンク -->
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+</body>
+</html>
+

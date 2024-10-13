@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グループ参加</title>
+</head>
+<body>
+    <h1>グループに参加するページ</h1>
+    <h2>Join Group</h2>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="group_name" placeholder="Enter group name">
+    <button type="submit">Join Group</button>
+</form>
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+
+    <a href="{% url 'home' %}">ホームに戻る</a>
+</body>
+</html>

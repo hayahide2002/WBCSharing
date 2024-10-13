@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カード選択</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/styles.css' %}">
+</head>
+<body>
+    <h2>あなたが行う業務に対して当てはまると感じた価値観のカードを3枚選択してください</h2>
+    <p>{{ card.image.url }}</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="cards-grid">
+            {% for card in cards %}
+                <div class="card">
+                    <label>
+                        <input type="checkbox" name="selected_cards" value="{{ card.name }}">
+                        <img src="{% static 'myapp/cards/' %}{{ card.image }}" alt="{{ card.name }}" class="card-image">
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="submit-btn">選択</button>
+    </form>
+
+    <button onclick="history.back()" class="back-btn">前のページに戻る</button>
+    
+</body>
+<style>
+/* 選択ボタンのスタイル */
+.submit-btn {
+    background-color: #007bff; /* 青色 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3; /* マウスオーバー時に濃い青 */
+}
+
+/* 前のページに戻るボタンのスタイル */
+.back-btn {
+    background-color: #28a745; /* 緑色 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.back-btn:hover {
+    background-color: #218838; /* マウスオーバー時に濃い緑 */
+}
+</style>
+
+</html>

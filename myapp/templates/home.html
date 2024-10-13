@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム</title>
+</head>
+
+<h2>Welcome {{ user.username }}</h2>
+<p>You are logged in as {{ user.username }}</p>
+<body>
+    <h1>ホームページ</h1>
+    <ul>
+        <li><a href="{% url 'create_group' %}">グループを作成</a></li>
+        <li><a href="{% url 'join_group' %}">グループに参加</a></li>
+
+        <h2>参加しているグループ一覧</h2>
+<ul>
+    {% for group in groups %}
+        <li>
+            <!-- グループ名をクリックすると、select_cardsビューに移行 -->
+            <a href="{% url 'select_cards' group.id %}">{{ group.name }}</a>
+        </li>
+    {% empty %}
+        <li>まだグループに参加していません</li>
+    {% endfor %}
+</ul>
+    </ul>
+</body>
+</html>

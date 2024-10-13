@@ -1,0 +1,83 @@
+/* カード全体のグリッドレイアウト */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);  /* 横に7枚 */
+    grid-gap: 10px;  /* カード間の余白 */
+    justify-items: center;  /* 各カードを中央揃えに */
+    margin: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.card {
+    border: 2px solid #ddd; /* カードの枠線 */
+    border-radius: 8px; /* 角を丸くする */
+    text-align: center; /* テキストを中央揃え */
+    padding: 10px; /* 内側の余白 */
+    transition: transform 0.2s ease-in-out; /* ホバー時の動き */
+}
+
+.card:hover {
+    transform: scale(1.05); /* カードをホバーすると拡大する */
+    border-color: #007bff; /* 枠線の色を変える */
+}
+
+.card-image {
+    width: 120px; /* カード画像の幅 */
+    height: 180px; /* カード画像の高さ */
+    object-fit: cover; /* 画像を枠内に収める */
+    border-radius: 8px; /* 角を丸める */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードにシャドウを追加 */
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    border: none;
+    border-radius: 5px; /* 角を丸くする */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* ホバー時のボタンの色 */
+}
+
+/* 選択ボタンのスタイル */
+.submit-btn {
+    background-color: #007bff; /* 青色 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3; /* マウスオーバー時に濃い青 */
+}
+
+/* 前のページに戻るボタンのスタイル */
+.back-btn {
+    background-color: #28a745; /* 緑色 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.back-btn:hover {
+    background-color: #218838; /* マウスオーバー時に濃い緑 */
+}
+

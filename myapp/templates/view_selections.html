@@ -1,0 +1,67 @@
+{% load static %}
+<h2>{{ group.name }}において選択されたカード一覧</h2>
+<p>Selections count: {{ selections.count }}</p>
+
+<!-- ユーザーの選択されたカードをリスト表示 -->
+<ul>
+    {% for selection in selections %}
+        <li>
+            <!-- ユーザー名を表示 -->
+            <strong>{{ selection.user.username }}:</strong>
+            <ul class="card-selection">
+                <!-- 各ユーザーが選択したカード3枚を表示 -->
+                {% if selection.selected_cards.all %}
+                    {% for card in selection.selected_cards.all %}
+                        <li class="card-item">
+                            <img src="{% static 'myapp/cards/' %}{{ card.image }}" alt="{{ card.name }}" class="card-image">
+                            <p>{{ card.name }}</p>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li>カードが選択されていません。</li> <!-- カードが選択されていない場合の表示 -->
+                {% endif %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- 前のページに戻るボタン -->
+<button onclick="history.back()" class="back-btn">前のページに戻る</button>
+
+<!-- CSSでカード画像のレイアウトを改善 -->
+<style>
+    .card-selection {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        flex-wrap: wrap; /* カードを画面幅に応じて折り返す */
+    }
+
+    .card-item {
+        margin: 10px; /* カードの間に適度な余白を追加 */
+        text-align: center;
+    }
+
+    .card-image {
+        width: 120px; /* カード画像の幅 */
+        height: 180px; /* カード画像の高さ */
+        object-fit: cover; /* 画像を枠内に収める */
+        border-radius: 8px; /* 角を丸める */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードにシャドウを追加 */
+    }
+
+    /* 前のページに戻るボタンのスタイル */
+    .back-btn {
+        background-color: #28a745; /* 緑色 */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px; /* 上に余白を追加 */
+    }
+
+    .back-btn:hover {
+        background-color: #218838; /* マウスオーバー時に濃い緑 */
+    }
+</style>
